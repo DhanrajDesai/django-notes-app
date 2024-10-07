@@ -15,6 +15,7 @@ pipeline{
         stage("Code"){
             steps{
                script{
+                echo "DhanrajSCMPlease"
                 clone("https://github.com/LondheShubham153/django-notes-app.git","main")
                }
                 
