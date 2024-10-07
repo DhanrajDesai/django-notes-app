@@ -1,7 +1,7 @@
 @Library("Shared") _
 pipeline{
     
-    agent { label "vinod"}
+    agent { label "slave1"}
     
     stages{
         
@@ -24,7 +24,7 @@ pipeline{
         stage("Build"){
             steps{
                 script{
-                docker_build("notes-app","latest","trainwithshubham")
+                docker_build("latest")
                 }
             }
         }
