@@ -24,14 +24,14 @@ pipeline{
         stage("Build"){
             steps{
                 script{
-                docker_build("latest")
+                build("latest")
                 }
             }
         }
         stage("Push to DockerHub"){
             steps{
                 script{
-                    docker_push("notes-app","latest","trainwithshubham")
+                    docker_push("latest","trainwithshubham")
                 }
             }
         }
