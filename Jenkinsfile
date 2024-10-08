@@ -16,7 +16,7 @@ pipeline{
             steps{
                script{
                 // git url: "https://github.com/DhanrajDesai/django-notes-app.git", branch: "main"   
-                clone("https://github.com/DhanrajDesai/django-notes-app.git","main")
+                   clone.clone("https://github.com/DhanrajDesai/django-notes-app.git","main")
                }
                 
             }
