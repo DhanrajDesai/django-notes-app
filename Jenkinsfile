@@ -44,7 +44,7 @@ pipeline{
                         sh  " docker push ${env.dockerhubuser}/djangolatest8:latest "
                     }*/
                     
-                    push.push("latest","dhanraj7707")
+                    push.push("djangolatest8","latest","dhanraj7707")
                 }
             }
         }
