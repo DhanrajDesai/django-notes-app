@@ -33,7 +33,7 @@ pipeline{
         stage("Push to DockerHub"){
             steps{
                 script{
-                    echo "Docker building"
+                    /*echo "Docker building"
                     withCredentials([usernamePassword(
                         credentialsId:"dockerhubcred",
                         passwordVariable:"dockerhubpass",
@@ -42,9 +42,9 @@ pipeline{
                          sh " docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass} "
                          sh " docker image tag djangolatest8:latest ${env.dockerhubuser}/djangolatest8:latest "
                         sh  " docker push ${env.dockerhubuser}/djangolatest8:latest "
-                    }
+                    }*/
                     
-                    //docker_push("latest","trainwithshubham")
+                    push.push("djangolatest8","Dhanraj7707")
                 }
             }
         }
