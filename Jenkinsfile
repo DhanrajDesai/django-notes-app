@@ -8,7 +8,7 @@ pipeline{
         stage("Hello shared"){
             steps{
                 script{
-                    hello()
+                    hello.call()
                 }
             }
         }
