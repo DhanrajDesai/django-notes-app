@@ -24,8 +24,8 @@ pipeline{
         stage("Build Images"){
             steps{
                 script{
-                echo "building"
-                    docker build . -t djangolatest8:latest 
+                   echo "building"
+                   sh "docker build . -t djangolatest8:latest"
                     //build("latest")
                 }
             }
@@ -39,9 +39,9 @@ pipeline{
                         passwordVariable:"dockerhubpass",
                         usernameVariable:"dockerhubuser"
                     )]){
-                         sh "docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass}
-                         sh " docker image tag notes-app:latest ${env.dockerhubuser}/notes-app:latest"
-                        sh  "docker push ${env.dockerhubuser}/django_user_notes:latest"
+                         sh " docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass} "
+                         sh " docker image tag notes-app:latest ${env.dockerhubuser}/djangolatest8:latest "
+                        sh  " docker push ${env.dockerhubuser}/djangolatest8:latest "
                     }
                     
                     //docker_push("latest","trainwithshubham")
