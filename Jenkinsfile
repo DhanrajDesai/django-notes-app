@@ -12,21 +12,20 @@ pipeline{
                 }
             }
         }
-        stage("Code"){
+        stage("git cloning repo"){
             steps{
                script{
-                
                  git url: "https://github.com/LondheShubham153/django-notes-app.git", branch: "main"   
-                //echo "DhanrajSCMPleaseeses"
                 //clone("https://github.com/LondheShubham153/django-notes-app.git","main")
                }
                 
             }
         }
-        stage("Build"){
+        stage("Build Images"){
             steps{
                 script{
                 echo "building"
+                    docker build . -t djangolatest8:latest 
                     //build("latest")
                 }
             }
@@ -35,6 +34,16 @@ pipeline{
             steps{
                 script{
                     echo "Docker building"
+                    withCredentials([usernamePassword(
+                        credentialsId:"dockerhubcred",
+                        passwordVariable:"dockerhubpass",
+                        usernameVariable:"dockerhubuser"
+                    )]){
+                         sh "docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass}
+                         sh " docker image tag notes-app:latest ${env.dockerhubuser}/notes-app:latest"
+                        sh  "docker push ${env.dockerhubuser}/django_user_notes:latest"
+                    }
+                    
                     //docker_push("latest","trainwithshubham")
                 }
             }
