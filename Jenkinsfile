@@ -8,15 +8,17 @@ pipeline{
         stage("Hello"){
             steps{
                 script{
-                    hello()
+                    echo "Hello"
                 }
             }
         }
         stage("Code"){
             steps{
                script{
-                echo "DhanrajSCMPleaseeses"
-                clone("https://github.com/LondheShubham153/django-notes-app.git","main")
+                
+                 git url: "https://github.com/LondheShubham153/django-notes-app.git", branch: "main"   
+                //echo "DhanrajSCMPleaseeses"
+                //clone("https://github.com/LondheShubham153/django-notes-app.git","main")
                }
                 
             }
@@ -24,21 +26,23 @@ pipeline{
         stage("Build"){
             steps{
                 script{
-                build("latest")
+                echo "building"
+                    //build("latest")
                 }
             }
         }
         stage("Push to DockerHub"){
             steps{
                 script{
-                    docker_push("latest","trainwithshubham")
+                    echo "Docker building"
+                    //docker_push("latest","trainwithshubham")
                 }
             }
         }
         stage("Deploy"){
             steps{
                 echo "This is deploying the code"
-                sh "docker compose down && docker compose up -d"
+               // sh "docker compose down && docker compose up -d"
             }
         }
     }
