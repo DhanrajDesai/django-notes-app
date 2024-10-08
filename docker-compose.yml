@@ -1,6 +1,6 @@
 version : "3.3"
 services :
   web :
-     image: "trainwithshubham/notes-app:latest"
+     image: "dhanraj7707/djangolatest8:latest"
      ports :
          - "8000:8000"
