@@ -15,7 +15,7 @@ pipeline{
         stage("git cloning repo"){
             steps{
                script{
-                 git url: "https://github.com/LondheShubham153/django-notes-app.git", branch: "main"   
+                 git url: "https://github.com/DhanrajDesai/django-notes-app.git", branch: "main"   
                 //clone("https://github.com/LondheShubham153/django-notes-app.git","main")
                }
                 
@@ -40,7 +40,7 @@ pipeline{
                         usernameVariable:"dockerhubuser"
                     )]){
                          sh " docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass} "
-                         sh " docker image tag notes-app:latest ${env.dockerhubuser}/djangolatest8:latest "
+                         sh " docker image tag djangolatest8:latest ${env.dockerhubuser}/djangolatest8:latest "
                         sh  " docker push ${env.dockerhubuser}/djangolatest8:latest "
                     }
                     
