@@ -12,7 +12,7 @@ pipeline{
                 }
             }
         }
-       /* stage("git cloning repo"){
+        stage("git cloning repo"){
             steps{
                script{
                  git url: "https://github.com/DhanrajDesai/django-notes-app.git", branch: "main"   
@@ -20,8 +20,8 @@ pipeline{
                }
                 
             }
-        }*/
-        /*stage("Build Images"){
+        }
+        stage("Build Images"){
             steps{
                 script{
                    echo "building"
@@ -29,8 +29,8 @@ pipeline{
                     //build("latest")
                 }
             }
-        }*/
-        /*stage("Push to DockerHub"){
+        }
+        stage("Push to DockerHub"){
             steps{
                 script{
                     echo "Docker building"
@@ -47,12 +47,12 @@ pipeline{
                     //docker_push("latest","trainwithshubham")
                 }
             }
-        }*/
-        /*stage("Deploy"){
+        }
+        stage("Deploy"){
             steps{
                 echo "This is deploying the code"
                 sh "docker compose down && docker compose up -d"
             }
-        }*/
+        }
     }
 }
