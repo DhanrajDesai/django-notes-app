@@ -26,7 +26,7 @@ pipeline{
                 script{
                    echo "building"
                   // sh "docker build . -t djangolatest8:latest"
-                    build.build("djangolatest8")
+                    build.builimage("djangolatest8")
                 }
             }
         }
