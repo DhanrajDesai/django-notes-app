@@ -15,9 +15,9 @@ jobs:
       - name: Run a simple command
         run:  |
           ls -l > output.txt
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
+      - name: demo_logs
         with:
-          name: demo_logs.txt
-          path: demo_logs.txt
+         path: ./demo_logs.txt 
+         if-no-files-found: warn 
+         include-hidden-files: false 
              
