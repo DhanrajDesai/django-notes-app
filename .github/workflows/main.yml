@@ -15,6 +15,7 @@ jobs:
       - name: Run a simple command
         run:  |
           ls -l > output.txt
+          cat output.txt
       - name: demo_logs
         uses: actions/upload-artifact@v3
         with:  
