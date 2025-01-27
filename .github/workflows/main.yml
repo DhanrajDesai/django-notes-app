@@ -16,7 +16,8 @@ jobs:
         run:  |
           ls -l > output.txt
       - name: demo_logs
-        with:
+        uses: actions/upload-artifact@v3
+        with:  
          path: ./demo_logs.txt 
          if-no-files-found: warn 
          include-hidden-files: false 
