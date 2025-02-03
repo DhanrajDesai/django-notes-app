@@ -17,8 +17,8 @@ jobs:
     - name: send custom message
       uses: appleboy/telegram-action@master
       with:
-        to: "Gitact_bot"
-        token: "8111880171:AAFi9XLnYjrUeZeP4nenSRcCb3ZNKdPp7OE"
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         message: |
           The ${{ github.event_name }} event triggered final step.
           echo This event is a pull request that had an assignee removed
