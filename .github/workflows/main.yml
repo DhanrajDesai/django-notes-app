@@ -25,7 +25,9 @@ jobs:
             The ${{ github.event_name }} event triggered.
             This event is a push to the main branch. # More appropriate message
       
-
+  report-genertion:
+    runs-on: ubuntu-latest
+    steps:
       - name: Generate text report
         run: |
           echo "GitHub Actions Report" > report.txt
