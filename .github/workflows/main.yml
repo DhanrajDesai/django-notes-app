@@ -11,19 +11,16 @@ jobs:
       - name: Check Telegram API (for debugging)
         run: |
           curl -X POST -H 'Content-Type: application/json' -d '{
-            "chat_id": "${{ secrets.TELEGRAM_TO }}", 
+            "chat_id": "${{ secrets.TELEGRAM_TO }}",
             "text": "Test from Direct API"
           }' "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage"
-        continue-on-error: true 
+        continue-on-error: true
 
       - name: Send Telegram message
         uses: appleboy/telegram-action@master
         with:
-          to: ${{ secrets.TELEGRAM_TO }}  
-          token: ${{ secrets.TELEGRAM_TOKEN }} 
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
             The ${{ github.event_name }} event triggered.
-            This event is a push to the main branch. # More appropriate message
-      
-# 8111880171:AAFi9XLnYjrUeZeP4nenSRcCb3ZNKdPp7OE
-# telegram_bot:tle
+            This event is a push to the main branch.
