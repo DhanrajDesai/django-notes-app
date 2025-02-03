@@ -9,8 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: check repsonse of telgram bot
-      uses: 
-
+      run: |
+          curl -X POST -H 'Content-Type: application/json' -d '{
+            "chat_id": "${{ secrets.TELEGRAM_TO }}",  # Use secret
+            "text": "Test from Direct API"
+          }' "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage"
     - name: send custom message
       uses: appleboy/telegram-action@master
       with:
