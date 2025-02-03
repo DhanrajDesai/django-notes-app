@@ -5,22 +5,14 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: Run a simple command
-        run:  |
-          echo "Hellow"
-  telegram_notify: 
+  notifyTelegram:
     runs-on: ubuntu-latest
     steps:
-    - name: send telegram message on push
+    - name: send custom message
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: "testing telegra boit"
+        message: |
+          The ${{ github.event_name }} event triggered final step.
+          echo This event is a pull request that had an assignee removed
