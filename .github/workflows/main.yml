@@ -24,4 +24,18 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             The ${{ github.event_name }} event triggered.
-            This event is a push to the main branch. 
+            This event is a push to the main branch.
+            *GitHub Push Notification* 🚀
+
+            *Event:* `${{ github.event_name }}`
+            *Repository:* `${{ github.repository }}`
+            *Branch:* `${{ github.ref_name }}`
+            *Commit SHA:* `${{ github.sha }}`
+            *Commit Message:*
+            ```
+            ${{ github.event.head_commit.message }}  # Format commit message as code
+            ```
+            *Author:* `${{ github.actor }}`
+            *Link:* `https://github.com/${{ github.repository }}/commit/${{ github.sha }}`
+
+            This is a push to the main branch.
