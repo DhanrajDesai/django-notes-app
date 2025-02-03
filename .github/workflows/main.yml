@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches: [ "main" ]
@@ -15,7 +14,9 @@ jobs:
             "text": "Test from Direct API"
           }' "https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage"
         continue-on-error: true
-
+  send_message:
+    runs-on: ubuntu-latest
+    steps:
       - name: Send Telegram message
         uses: appleboy/telegram-action@master
         with:
