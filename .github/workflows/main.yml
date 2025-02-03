@@ -24,4 +24,4 @@ jobs:
           token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           message: |
             The ${{ github.event_name }} event triggered.
-            This event is a push to the main branch.
+            This event is a push to the main branch. 
