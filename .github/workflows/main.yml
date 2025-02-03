@@ -24,7 +24,6 @@ jobs:
           message: |
             The ${{ github.event_name }} event triggered.
             This event is a push to the main branch. # More appropriate message
-         
-
+      
 # 8111880171:AAFi9XLnYjrUeZeP4nenSRcCb3ZNKdPp7OE
 # telegram_bot:tle
