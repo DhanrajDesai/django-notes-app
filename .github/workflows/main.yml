@@ -8,11 +8,14 @@ jobs:
   notifyTelegram:
     runs-on: ubuntu-latest
     steps:
+    - name: check repsonse of telgram bot
+      uses: 
+
     - name: send custom message
       uses: appleboy/telegram-action@master
       with:
-        to: ${{ secrets.TELEGRAM_TO }}
-        token: ${{ secrets.TELEGRAM_TOKEN }}
+        to: "Gitact_bot"
+        token: "8111880171:AAFi9XLnYjrUeZeP4nenSRcCb3ZNKdPp7OE"
         message: |
           The ${{ github.event_name }} event triggered final step.
           echo This event is a pull request that had an assignee removed
