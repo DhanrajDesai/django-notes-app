@@ -43,8 +43,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: send teams message
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-
+        uses: jdcargile/ms-teams-notification@v1.4
+        with:
+          github-token: ${{ github.token }} # this will use the runner's token.
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: Your custom notification message 
+          notification-color: 17a2b8
   
