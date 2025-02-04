@@ -39,3 +39,12 @@ jobs:
             *Link:* `https://github.com/${{ github.repository }}/commit/${{ github.sha }}`
 
             This is a push to the main branch.
+  teams_message:
+    runs-on: ubuntu-latest
+    steps:
+      - name: send teams message
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+
+  
