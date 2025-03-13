@@ -11,4 +11,4 @@ jobs:
       - name: Log Approver Name
         run: echo "This workflow was approved by team member ${{ github.actor }}"
       - name: Print message
-        run: echo "Workflow  is running after approval!"
+        run: echo "Workflow the is running after approval!"
