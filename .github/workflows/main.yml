@@ -9,4 +9,4 @@ jobs:
     environment: manual-approval  # This enforces approval before execution
     steps:
       - name: Print message
-        run: echo "Workflow is running after approval!"
+        run: echo "Workflow  is running after approval!"
