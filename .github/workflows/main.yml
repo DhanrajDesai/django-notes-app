@@ -1,52 +1,12 @@
-name: CI
+name: Manual Trigger with Approval
+
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:  # Allows manual trigger
 
 jobs:
-  notifyTelegram:
+  request-approval:
     runs-on: ubuntu-latest
+    environment: manual-approval  # This enforces approval before execution
     steps:
-      - name: Check Telegram API (for debugging)
-        run: |
-          curl -X POST -H 'Content-Type: application/json' -d '{
-            "chat_id": "${{ secrets.TELEGRAM_TO }}",
-            "text": "Test from Direct API"
-          }' "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/getupdate"
-        continue-on-error: true
-  send_message:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Send Telegram message
-        uses: appleboy/telegram-action@master
-        with:
-          to: ${{ secrets.TELEGRAM_TO }}
-          token: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          message: |
-            The ${{ github.event_name }} event triggered.
-            This event is a push to the main branch.
-            *GitHub Push Notification* 🚀
-
-            *Event:* `${{ github.event_name }}`
-            *Repository:* `${{ github.repository }}`
-            *Branch:* `${{ github.ref_name }}`
-            *Commit SHA:* `${{ github.sha }}`
-            *Commit Message:*
-            ```
-            ${{ github.event.head_commit.message }}  # Format commit message as code
-            ```
-            *Author:* `${{ github.actor }}`
-            *Link:* `https://github.com/${{ github.repository }}/commit/${{ github.sha }}`
-
-            This is a push to the main branch.
-  teams_message:
-    runs-on: ubuntu-latest
-    steps:
-      - name: send teams message
-        uses: jdcargile/ms-teams-notification@v1.4
-        with:
-          github-token: ${{ github.token }} # this will use the runner's token.
-          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
-          notification-summary: Your custom notification message 
-          notification-color: 17a2b8
-  
+      - name: Print message
+        run: echo "Workflow is running after approval!"

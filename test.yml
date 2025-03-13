@@ -1,0 +1,47 @@
+name: Selenium Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  selenium-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Build and Package
+        run: mvn package -DskipTests
+
+      - name: Deploy to Environment (Replace with your deployment steps)
+        run: echo "Deploying..." # Replace with your actual deployment command
+
+      - name: Run Selenium Tests
+        run: mvn test
+
+      - name: Publish Test Report (Extent Report)
+        uses: actions/upload-artifact@v3
+        if: always() # Upload even if tests fail
+        with:
+          name: extent-report
+          path: target/extent-report  # Path to your Extent Report directory
+
+     
