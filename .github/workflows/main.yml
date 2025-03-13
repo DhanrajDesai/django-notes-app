@@ -8,5 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: manual-approval  # This enforces approval before execution
     steps:
+      - name: Log Approver Name
+        run: echo "This workflow was approved by ${{ github.actor }}"
       - name: Print message
         run: echo "Workflow  is running after approval!"
