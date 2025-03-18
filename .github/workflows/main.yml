@@ -4,11 +4,30 @@ on:
   workflow_dispatch:  # Allows manual trigger
     
 jobs:
-  request-approval:
+  deploy-green:
     runs-on: ubuntu-latest
-    environment: manual-approval  # This enforces approval before execution
     steps:
-      - name: Log Approver Name
-        run: echo "This workflow was approved by team member ${{ github.actor }}"
-      - name: Print message
-        run: echo "Workflow the is running after approval!"
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Green
+        run: echo "Deploying new version to Green environment"
+
+      - name: Test Green Deployment
+        run: echo "Running tests on Green environment"
+
+      - name: Switch Traffic to Green
+        run: |
+          echo "Switching traffic from Blue ($BLUE_ENV) to Green ($GREEN_ENV)"
+          echo "BLUE_ENV=${GREEN_ENV}" >> $GITHUB_ENV
+          echo "GREEN_ENV=${BLUE_ENV}" >> $GITHUB_ENV
+
+      - name: Verify Deployment
+        run: echo "Deployment successful! Green is now live."
+
+      - name: Rollback if Needed
+        if: failure()
+        run: |
+          echo "Rolling back to Blue environment"
+          echo "BLUE_ENV=${BLUE_ENV}" >> $GITHUB_ENV
+          echo "GREEN_ENV=${GREEN_ENV}" >> $GITHUB_ENV
