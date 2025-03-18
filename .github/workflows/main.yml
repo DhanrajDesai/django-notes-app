@@ -14,7 +14,7 @@ jobs:
         run: echo "Deploying new version to Green environment"
 
       - name: Test Green Deployment
-        run: echo "Running tests on Green environment"
+        run: echo "Running tests on Green environment
 
       - name: Switch Traffic to Green
         run: |
