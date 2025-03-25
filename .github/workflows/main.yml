@@ -4,11 +4,12 @@ on:
       approve:
         description: "Approve deployment? Select 'True' to proceed."
         required: true
-        default: "False"
+        default: "Select an option"
         type: choice
         options:
-          - "approve"
-          - "reject"
+          - "Select an option"
+          - "True"
+          - "False"
 
 jobs:
   deploy-green:
