@@ -14,7 +14,7 @@ on:
 jobs:
   deploy-green:
     runs-on: ubuntu-latest
-    if: github.event.inputs.approve == 'approve' 
+    if: github.event.inputs.approve == 'True' 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
