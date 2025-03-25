@@ -9,7 +9,7 @@ on:
         options:
           - "Select an option"
           - "True"
-          - "False."
+          - "False"
 
 jobs:
   deploy-green:
