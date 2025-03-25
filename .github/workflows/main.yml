@@ -2,14 +2,18 @@ on:
   workflow_dispatch:
     inputs:
       approve:
-        description: "Type is 'approve' to proceed with deployment"
+        description: "Approve deployment? Select 'True' to proceed."
         required: true
-        default: "no"
+        default: "False"
+        type: choice
+        options:
+          - "approve"
+          - "reject"
 
 jobs:
   deploy-green:
     runs-on: ubuntu-latest
-    if: github.event.inputs.approve == 'True' 
+    if: github.event.inputs.approve == 'approve' 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
