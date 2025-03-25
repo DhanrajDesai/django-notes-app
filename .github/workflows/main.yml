@@ -2,7 +2,7 @@ on:
   workflow_dispatch:
     inputs:
       approve:
-        description: "Type 'approve' to proceed with deployment"
+        description: "Type is 'approve' to proceed with deployment"
         required: true
         default: "no"
 
