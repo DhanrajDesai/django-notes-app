@@ -1,11 +1,15 @@
-name: Manual Trigger with Approval
-
 on:
-  workflow_dispatch:  # Allows manual trigger
-    
+  workflow_dispatch:
+    inputs:
+      approve:
+        description: "Type 'approve' to proceed with deployment"
+        required: true
+        default: "no"
+
 jobs:
   deploy-green:
     runs-on: ubuntu-latest
+    if: github.event.inputs.approve == 'approve' 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -16,18 +20,18 @@ jobs:
       - name: Test Green Deployment
         run: echo "Running tests on Green environment"
 
-      - name: Switch Traffic to Green
-        run: |
-          echo "Switching traffic from Blue ($BLUE_ENV) to Green ($GREEN_ENV)"
-          echo "BLUE_ENV=${GREEN_ENV}" >> $GITHUB_ENV
-          echo "GREEN_ENV=${BLUE_ENV}" >> $GITHUB_ENV
+      # - name: Switch Traffic to Green
+      #   run: |
+      #     echo "Switching traffic from Blue ($BLUE_ENV) to Green ($GREEN_ENV)"
+      #     echo "BLUE_ENV=${GREEN_ENV}" >> $GITHUB_ENV
+      #     echo "GREEN_ENV=${BLUE_ENV}" >> $GITHUB_ENV
 
-      - name: Verify Deployment
-        run: echo "Deployment successful! Green is now live."
+      # - name: Verify Deployment
+      #   run: echo "Deployment successful! Green is now live."
 
-      - name: Rollback if Needed
-        if: failure()
-        run: |
-          echo "Rolling back to Blue environment"
-          echo "BLUE_ENV=${BLUE_ENV}" >> $GITHUB_ENV
-          echo "GREEN_ENV=${GREEN_ENV}" >> $GITHUB_ENV
+      # - name: Rollback if Needed
+      #   if: failure()
+      #   run: |
+      #     echo "Rolling back to Blue environment"
+      #     echo "BLUE_ENV=${BLUE_ENV}" >> $GITHUB_ENV
+      #     echo "GREEN_ENV=${GREEN_ENV}" >> $GITHUB_ENV
