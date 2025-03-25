@@ -21,6 +21,11 @@ jobs:
         run: |
           echo "Approver did not accepted."
           exit 1  # Fail the workflow if the user doesn't choose "True" or "False"
+
+      - name: Display Approver Name
+        run: |
+          echo "Deployment approved by: ${{ github.actor }}"    
+          
       - name: Checkout Code
         uses: actions/checkout@v3
 
