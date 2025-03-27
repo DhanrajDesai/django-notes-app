@@ -7,7 +7,7 @@ on:
         default: "Select an option"
         type: choice
         options:
-          - "Select an option"
+          - "Select an Option"
           - "True"
           - "False"
 
