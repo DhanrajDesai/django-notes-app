@@ -34,7 +34,13 @@ jobs:
 
       - name: Test Green Deployment
         run: echo "Running tests on Green environment"
-
+        
+      - name: Manual Approval for Traffic Switch
+        uses: trstringer/manual-approval@v1 # Use the manual approval action
+        with:
+          approvers: 'dhanrajdesai3200@gmail.com' # Replace with your approver's GitHub usernames
+          minimum-approvals: 1
+          
       # - name: Switch Traffic to Green
       #   run: |
       #     echo "Switching traffic from Blue ($BLUE_ENV) to Green ($GREEN_ENV)"
