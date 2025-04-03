@@ -38,7 +38,7 @@ jobs:
       - name: Manual Approval for Traffic Switch
         uses: trstringer/manual-approval@v1 # Use the manual approval action
         with:
-          approvers: 'dhanrajdesai3200@gmail.com' # Replace with your approver's GitHub usernames
+          approvers: 'dhanrajdesai3200@gmail.com' # Replace with you approver's GitHub usernames
           minimum-approvals: 1
         env:
           INPUT_SECRET: ${{ secrets.TOKEN_ID }}
