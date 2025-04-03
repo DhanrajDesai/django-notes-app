@@ -41,7 +41,7 @@ jobs:
           approvers: 'dhanrajdesai3200@gmail.com' # Replace with you approver's GitHub usernames
           minimum-approvals: 1
         env:
-          INPUT_SECRET: ${{ secrets.TOKEN_ID }}
+          INPUT_SECRET: ${{ secrets.INPUT_SECRET }}
           
       # - name: Switch Traffic to Green
       #   run: |
