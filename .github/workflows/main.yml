@@ -40,6 +40,7 @@ jobs:
         with:
           approvers: 'dhanrajdesai3200@gmail.com' # Replace with your approver's GitHub usernames
           minimum-approvals: 1
+          github-token: ${{ secrets.TOKEN_ID }}
           
       # - name: Switch Traffic to Green
       #   run: |
