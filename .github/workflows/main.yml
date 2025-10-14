@@ -23,7 +23,7 @@ jobs:
         run: echo "cheersss success!!!!with daruda parshyaaa....."
   Prod:
     runs-on: ubuntu-latest
-    environment: production
+    environment: Test env
     needs: test
     steps:
       - name: Prod phase going on
