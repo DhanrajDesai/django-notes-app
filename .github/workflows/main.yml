@@ -27,6 +27,6 @@ jobs:
     needs: test
     steps:
       - name: Prod phase going on
-        run: echo "prod phase going on...."
+        run: echo "prod phase going on..."
       - name: print success
         run: echo "Production deployment"
