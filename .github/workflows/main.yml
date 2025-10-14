@@ -2,7 +2,7 @@ name: Hello World Pipeline
 on:
   push:
     branches:
-      - main
+      - test_manual
 
 jobs:
   build:
