@@ -7,9 +7,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Print Hello World
         run: echo "👋 Hello, World! This is my first GitHub Actions pipeline."
       - name: print success
         run: echo "job success"
+        
+  test:
+    runs-on: ubuntu-latest
+    #needs: build
+    steps:
+      - name: Tesing phase going on
+        run: echo "Testing phase going on...."
+      - name: print success
+        run: echo "cheersss success!!!!with daruda parshyaaa....."
