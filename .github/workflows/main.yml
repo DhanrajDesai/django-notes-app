@@ -1,52 +1,15 @@
+name: Hello World Pipeline
 on:
-  workflow_dispatch:
-    inputs:
-      approve:
-        description: "Approve deployment? Select 'True' to proceed."
-        required: true
-        default: "Select an option"
-        type: choice
-        options:
-          - "Select an option"
-          - "True"
-          - "False."
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy-green:
+  build:
     runs-on: ubuntu-latest
-    if: github.event.inputs.approve == 'True' 
+
     steps:
-      - name: Validate Selection
-        if: github.event.inputs.approve != 'True'
-        run: |
-          echo "Approver did not accepted."
-          exit 1  # Fail the workflow if the user doesn't choose "True" or "False"
-
-      - name: Display Approver Name
-        run: |
-          echo "Deployment approved by: ${{ github.actor }}"    
-          
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Deploy to Green
-        run: echo "Deploying new version to Green environment"
-
-      - name: Test Green Deployment
-        run: echo "Running tests on Green environment"
-
-      # - name: Switch Traffic to Green
-      #   run: |
-      #     echo "Switching traffic from Blue ($BLUE_ENV) to Green ($GREEN_ENV)"
-      #     echo "BLUE_ENV=${GREEN_ENV}" >> $GITHUB_ENV
-      #     echo "GREEN_ENV=${BLUE_ENV}" >> $GITHUB_ENV
-
-      # - name: Verify Deployment
-      #   run: echo "Deployment successful! Green is now live."
-
-      # - name: Rollback if Needed
-      #   if: failure()
-      #   run: |
-      #     echo "Rolling back to Blue environment"
-      #     echo "BLUE_ENV=${BLUE_ENV}" >> $GITHUB_ENV
-      #     echo "GREEN_ENV=${GREEN_ENV}" >> $GITHUB_ENV
+      - name: Print Hello World
+        run: echo "👋 Hello, World! This is my first GitHub Actions pipeline."
+      - name: print success
+        run: echo "job success"
