@@ -1,8 +1,6 @@
 name: Hello World Pipeline
 on:
-  push:
-    branches:
-      - test_manual
+  workflow_dispatch:
 
 jobs:
   build:
