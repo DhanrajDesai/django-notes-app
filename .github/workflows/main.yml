@@ -11,7 +11,7 @@ jobs:
       - name: Print Hello World
         run: echo "👋 Hello, World! This is my first GitHub Actions pipeline."
       - name: print success
-        run: echo "job success"
+        run: echo "job success ${{ secrets.GENDER }}"
         
   test:
     runs-on: ubuntu-latest
