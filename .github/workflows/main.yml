@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: EC2_parshya
     steps:
       - name: Print Hello World
         run: echo "👋 Hello, World! This is my first GitHub Actions pipeline."
@@ -16,7 +16,7 @@ jobs:
           MY_SECRET: ${{ secrets.GENDER }}
         
   test:
-    runs-on: ubuntu-latest
+    runs-on: EC2_parshya
     needs: build
     steps:
       - name: Testing phase going on
@@ -24,7 +24,7 @@ jobs:
       - name: print success
         run: echo "cheersss success!!!!with daruda parshyaaa....."
   Prod:
-    runs-on: ubuntu-latest
+    runs-on: EC2_parshya
     environment: Test env
     needs: test
     steps:
