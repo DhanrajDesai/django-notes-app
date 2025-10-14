@@ -1,6 +1,8 @@
 name: Hello World Pipeline
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - test_manual
 
 jobs:
   build:
@@ -15,7 +17,16 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Tesing phase going on
+      - name: Testing phase going on
         run: echo "Testing phase going on...."
       - name: print success
         run: echo "cheersss success!!!!with daruda parshyaaa....."
+  Prod:
+    runs-on: ubuntu-latest
+    environment: production
+    needs: test
+    steps:
+      - name: Prod phase going on
+        run: echo "prod phase going on...."
+      - name: print success
+        run: echo "Production deployment"
